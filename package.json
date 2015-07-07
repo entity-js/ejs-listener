@@ -1,0 +1,24 @@
+{
+  "name": "ejs-listener",
+  "description": "Provides 'listener' component.",
+  "keywords": [
+    "EntityJS - Components",
+    "Listener"
+  ],
+  "author": "Orgun109uk <orgun109uk@gmail.com> (http://my-site.com/)",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/entity-js/ejs-listener.git"
+  },
+  "scripts": {
+    "test": "mocha ./tests/",
+    "eslint": "eslint index.js ./lib ./tests",
+    "jshint": "jshint index.js ./lib ./tests"
+  },
+  "dependencies": {
+    "async": "^1.3.0",
+    "ejs-sortby": "git://github.com/entity-js/ejs-sortby.git#0.0.2",
+    "ejs-static": "git://github.com/entity-js/ejs-static.git#0.0.1"
+  }
+}
