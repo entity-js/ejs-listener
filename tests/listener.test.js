@@ -522,6 +522,49 @@ describe('ejs/listener', function () {
 
   });
 
+  describe('Listener.emit()', function () {
+
+    it('shouldEmitEventCallback', function (done) {
+
+      var invoked = {fnc1: 0, fnc2: 0, fnc3: 0},
+          fnc1 = function (next) {
+            invoked.fnc1++;
+
+            next();
+          },
+          fnc2 = function (next) {
+            invoked.fnc2++;
+
+            next();
+          },
+          fnc3 = function (next) {
+            invoked.fnc3++;
+
+            next();
+          };
+
+      listener.on('test', fnc1);
+      listener.on(['test', 'test2'], fnc2);
+      listener.on('test', fnc3);
+
+      listener.emit('test');
+
+      while (invoked.fnc3 === 0) {
+        // Do nothing.
+      }
+
+      test.object(invoked).is({
+        fnc1: 1,
+        fnc2: 1,
+        fnc3: 1
+      });
+
+      done();
+
+    });
+
+  });
+
   describe('Listener.events()', function () {
 
     it('shouldReturnAnEmptyObjct', function () {
